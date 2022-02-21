@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange">#E96E50</color>
+    <color name="orange_dark">#DC502D</color>
+    <color name="teal_200">#6EF1E4</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- 最高気温のテキストカラー -->
+    <color name="temp_max">#DAE80C0C</color>
+    <!-- 最低気温のテキストカラー -->
+    <color name="temp_min">#BF007BB8</color>
+</resources>

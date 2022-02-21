@@ -1,0 +1,21 @@
+buildscript {
+    ext {
+        nav_ver = '2.3.5'
+        hilt_ver = '2.40.5'
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_ver"
+        classpath "com.google.android.gms:oss-licenses-plugin:0.10.4"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_ver"
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

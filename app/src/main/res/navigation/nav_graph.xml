@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="jp.co.greensys.weatherapp.ui.fragment.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_SelectFragment"
+            app:destination="@id/selectFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_DetailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectFragment"
+        android:name="jp.co.greensys.weatherapp.ui.fragment.SelectFragment"
+        android:label="@string/select_fragment_label"
+        tools:layout="@layout/fragment_select">
+        <action
+            android:id="@+id/action_SelectFragment_to_DetailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/detailFragment"
+        android:name="jp.co.greensys.weatherapp.ui.dialog.DetailDialog"
+        android:label="@string/detail_fragment_label"
+        tools:layout="@layout/dialog_detail">
+        <argument
+            android:name="cityName"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="coord"
+            android:defaultValue="@null"
+            app:argType="jp.co.greensys.weatherapp.domain.remote_data_source.Coord"
+            app:nullable="true" />
+    </dialog>
+</navigation>

@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name" translatable="false">WeatherApp</string>
+    <string name="oss_licence">オープンソースライセンス</string>
+    <string name="action_settings">設定</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="select_fragment_label">都道府県の選択</string>
+    <string name="detail_fragment_label">天気の詳細画面</string>
+    <string name="home_fragment_label">ホーム</string>
+
+    <string name="format_temperature_max">最高気温：%.1f℃</string>
+    <string name="format_temperature_min">最低気温：%.1f℃</string>
+    <string name="format_humidity">湿度：%d％</string>
+
+    <!-- ホーム画面 -->
+    <string name="home_to_select">都道府県</string>
+    <string name="home_to_location">現在地</string>
+
+    <!-- アイコン名から天気アイコンを取得する -->
+    <string name="request_weather_icon" translatable="false">https://openweathermap.org/img/wn/%s\@4x.png</string>
+
+    <!-- 位置情報のアラートダイアログ-->
+    <string name="alertdialog_location_title">位置情報の許可について</string>
+    <string name="alertdialog_location_message">現在地の天気情報を取得するには位置情報の許可が必要です。\n次の画面より<b>権限</b> > <b>位置情報</b> を許可してください</string>
+    <string name="alertdialog_close">閉じる</string>
+    <string name="alertdialog_gps_off">GPS機能がオフです</string>
+    <string name="alertdialog_please_gps_on">現在地の天気情報を取得するにはGPSをオンにしてください。</string>
+    <string name="alertdialog_gps_keep_on">天気の情報を取得できるまでGPS機能はオンにしておいてください。</string>
+    <string name="getting_location">位置情報を読み込んでいます</string>
+    <string name="ok">OK</string>
+
+    <!-- コンテンツ説明 -->
+    <string name="description_weather_icon">天気アイコン</string>
+    <string name="description_close">閉じる</string>
+
+    <!-- エラー -->
+    <string name="error_loading_title">読み込みの失敗</string>
+    <string name="error_loading_message">読み込みに失敗しました。</string>
+    <string name="error_connecting_title">接続の失敗</string>
+    <string name="error_connecting_message">接続に失敗しました。</string>
+
+    <!-- 降水確率グラフ -->
+    <string name="pop_title">降水確率</string>
+</resources>

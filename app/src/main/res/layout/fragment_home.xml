@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.HomeFragment">
+
+    <!-- 選択画面へ -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/home_select_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_to_select"
+        android:textSize="@dimen/text_size"
+        app:icon="@drawable/ic_fluent_text_bullet_list_tree_24_filled"
+        app:layout_constraintBottom_toTopOf="@id/home_location_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <!-- 現在地の天気へ -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/home_location_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/home_to_location"
+        android:textSize="@dimen/text_size"
+        app:icon="@drawable/ic_fluent_my_location_24_filled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/home_select_button"
+        app:layout_constraintStart_toStartOf="@id/home_select_button"
+        app:layout_constraintTop_toBottomOf="@id/home_select_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

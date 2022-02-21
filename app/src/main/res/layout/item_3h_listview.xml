@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="forecast"
+            type="jp.co.greensys.weatherapp.domain.entity.ForecastItemEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 日付 -->
+        <TextView
+            android:id="@+id/list_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{forecast.date.dateString}"
+            android:textSize="@dimen/text_size_3h_date"
+            android:visibility="@{forecast.date.tomorrow ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@id/list_hour"
+            app:layout_constraintEnd_toEndOf="@id/list_hour"
+            app:layout_constraintStart_toStartOf="@id/list_hour"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="11日" />
+
+        <!-- 時間 -->
+        <TextView
+            android:id="@+id/list_hour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{forecast.date.timeString}"
+            android:textAlignment="center"
+            android:textSize="@dimen/weather_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/list_weather_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_date"
+            tools:text="18:00" />
+
+        <!-- 天気アイコン -->
+        <ImageView
+            android:id="@+id/list_weather_icon"
+            android:layout_width="@dimen/weather_icon_size_small"
+            android:layout_height="@dimen/weather_icon_size_small"
+            android:contentDescription="@string/description_weather_icon"
+            app:iconId="@{forecast.iconId}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/list_temp_max"
+            app:layout_constraintStart_toEndOf="@id/list_hour"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_fluent_weather_drizzle_48_filled" />
+
+        <!--最高気温 -->
+        <TextView
+            android:id="@+id/list_temp_max"
+            style="@style/detail_text_view.sub.max"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{forecast.getMaxTemp(context)}"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toTopOf="@id/list_temp_min"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/list_weather_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="最高気温：11.5 ℃" />
+
+        <!--最低気温 -->
+        <TextView
+            android:id="@+id/list_temp_min"
+            style="@style/detail_text_view.sub.min"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{forecast.getMinTemp(context)}"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toTopOf="@id/list_humidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/list_temp_max"
+            app:layout_constraintTop_toBottomOf="@id/list_temp_max"
+            tools:text="最低気温8.2 ℃" />
+
+        <!-- 湿度 -->
+        <TextView
+            android:id="@+id/list_humidity"
+            style="@style/detail_text_view.sub"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{forecast.getHumidity(context)}"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/list_temp_max"
+            app:layout_constraintTop_toBottomOf="@id/list_temp_min"
+            tools:text="湿度：87 ％" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

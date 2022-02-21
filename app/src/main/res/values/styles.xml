@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 天気詳細のTextViewのスタイル -->
+    <style name="detail_text_view">
+        <item name="android:textSize">@dimen/weather_text_size</item>
+        <item name="android:layout_marginTop">@dimen/weather_text_margin_vertical</item>
+    </style>
+
+    <style name="detail_text_view.sub">
+        <item name="android:textSize">@dimen/weather_text_size_sub</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+        <item name="android:drawableTint">?android:attr/textColorTertiary</item>
+    </style>
+
+    <style name="detail_text_view.sub.max">
+        <item name="android:textColor">@color/temp_max</item>
+        <item name="android:drawableTint">@color/temp_max</item>
+    </style>
+
+    <style name="detail_text_view.sub.min">
+        <item name="android:textColor">@color/temp_min</item>
+        <item name="android:drawableTint">@color/temp_min</item>
+    </style>
+
+    <style name="positive_button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/orange</item>
+    </style>
+</resources>

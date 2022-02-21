@@ -1,0 +1,21 @@
+# ==== Emojis ====
+# 🐛 :bug:           fix: バグ修正
+# 🔧 :wrench:        modify: 機能改善
+# ♻ :recycle:       refactor: リファクタリング
+# 📝 :memo:          docs: ドキュメント変更
+# 🎨 :art:           style: フォーマットや構造改善
+# 🔥 :fire:          remove:　不要な機能・ファイルの削除
+# ✨ :sparkles:      feat: 部分的な機能追加
+# 🍰 :cake:          chore: 自動生成されたファイル
+# 🌱 :seedling:      init commit: 初期コミット
+# 🧪 :test_tube:     test: テストやCIの修正・改善
+# 👕 :shirt:         lint: Lintエラーの修正やコードスタイルの修正
+# 🚀️ :rocket:        perf: パフォーマンス改善
+# 🆙 :up:            update: 依存パッケージなどのアップデート
+# 🚧 :construction:  wip: 作業中
+
+
+# ==== Format ====
+# :emoji:prefix: Subject
+#
+# Commit body...

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="jp.co.greensys.weatherapp.viewmodel.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/bottom_sheet_padding_horizontal"
+        tools:context=".ui.dialog.DetailDialog">
+
+        <!-- 閉じるボタン -->
+        <ImageButton
+            android:id="@+id/detail_close_button"
+            android:layout_width="@dimen/close_button_size"
+            android:layout_height="@dimen/close_button_size"
+            android:layout_marginTop="@dimen/bottom_sheet_padding_vertical"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description_close"
+            android:onClick="@{() -> viewModel.onClickClose()}"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingVertical="@dimen/bottom_sheet_padding_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_min="@dimen/bottom_sheet_min_height"
+            app:layout_constraintTop_toBottomOf="@id/detail_close_button">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- 都道府県名 -->
+                <TextView
+                    android:id="@+id/detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.forecastDataEntity.name}"
+                    android:textSize="@dimen/text_size_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="千葉県" />
+
+                <!-- 日付 -->
+                <TextView
+                    android:id="@+id/detail_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/weather_city_name_bottom_margin"
+                    android:text="@{viewModel.forecastDataEntity.dateEntity.fullDateString}"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintBottom_toTopOf="@id/detail_pop_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_name"
+                    tools:text="2021年12月02日" />
+
+                <!-- グラフタイトル -->
+                <TextView
+                    android:id="@+id/detail_pop_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/chart_title_margin_top"
+                    android:text="@string/pop_title"
+                    android:textSize="@dimen/chart_title_size"
+                    app:layout_constraintBottom_toTopOf="@id/detail_pop_chart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_date" />
+
+                <!-- 降水確率グラフ -->
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/detail_pop_chart"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/chart_height"
+                    android:layout_marginHorizontal="@dimen/chart_horizontal_padding"
+                    app:layout_constraintBottom_toTopOf="@id/detail_forecast"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_pop_title" />
+
+                <!-- 3時間ごとの予報 -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detail_forecast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_vertical_3h"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_pop_chart"
+                    tools:itemCount="8"
+                    tools:listitem="@layout/item_3h_listview" />
+
+                <!-- 読み込み時のインディケーター -->
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/detail_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="gone" />
+
+                <!-- 読み込み中の非表示グループ -->
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/detail_ui_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.isLoading() ? View.INVISIBLE : View.VISIBLE}"
+                    app:constraint_referenced_ids="detail_date,detail_forecast,detail_name,detail_pop_chart,detail_pop_title"
+                    tools:visibility="visible" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
